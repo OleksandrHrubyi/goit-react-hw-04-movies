@@ -1,0 +1,23 @@
+.btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+.btn:hover,
+.btn:focus {
+  cursor: pointer;
+}
+
+.base {
+  background-color: rgb(10, 73, 189);
+
+  margin-right: 15px;
+}
+
+.active {
+  background-color: rgb(11, 165, 80);
+}
