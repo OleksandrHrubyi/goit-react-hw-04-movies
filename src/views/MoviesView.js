@@ -3,8 +3,12 @@ import Container from "../components/Container/Container";
 import Header from "../components/Header/Header";
 import { Component } from "react";
 import { fetchMoviesFind } from "../service/moviesApi";
-import { Route, Switch } from "react-router-dom";
+
 import TrendList from "../components/TrendList/TrendList";
+import queryString from "query-string";
+import { Route } from "react-router-dom";
+import routes from "../routes";
+import ButtonMain from "../components/ButtonMain/ButtonMain";
 
 class MoviesView extends Component {
   state = {
@@ -12,34 +16,41 @@ class MoviesView extends Component {
     films: [],
   };
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchfilms !== this.state.searchfilms) {
+    console.log(this.props);
+    if (
+      prevState.searchfilms !== this.state.searchfilms &&
+      this.state.searchfilms
+    ) {
       fetchMoviesFind(this.state.searchfilms).then((res) => {
         this.setState({ films: res.results });
+        this.props.history.push({
+          pathname: this.props.location.pathname,
+          search: `query=${this.state.searchfilms}`,
+        });
       });
     }
   }
 
+  getMovieFromProps = (props) => {
+    return queryString.parse(props.location.search);
+  };
+
   handleOnSubmit = (value) => {
     this.setState({ searchfilms: value });
-    this.props.history.push({
-      pathname: this.props.location.pathname,
-      search: `query=${value}`,
-    });
   };
 
   render() {
-    const { searchfilms } = this.state;
-    console.log(this.props.match);
     return (
       <>
         <Container>
-          <Header />
+          <Header>
+            <ButtonMain path={routes.home} name={"Home"} />
+            <ButtonMain path={routes.movies} name={"Movies"} />
+          </Header>
           <MoviesPage onSubmit={this.handleOnSubmit} />
-          <TrendList list={this.state.films} />
-          {/* <Route
-            path={`${this.props.match.path}?query=${searchfilms}`}
-            render={(props) => <TrendList list={this.state.films} />}
-          /> */}
+          <Route
+            render={(props) => <TrendList {...props} list={this.state.films} />}
+          />
         </Container>
       </>
     );

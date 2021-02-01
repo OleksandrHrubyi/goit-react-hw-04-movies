@@ -8,6 +8,7 @@ class MoviesPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit(this.state.searchValue);
+    this.setState({ searchValue: "" });
   };
 
   handleChange = (event) => {

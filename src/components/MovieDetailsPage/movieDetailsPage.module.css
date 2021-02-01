@@ -1,11 +1,26 @@
+.container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 .img {
   width: 100%;
 }
 
 .imgBox {
-  width: 200px;
+  max-width: 25%;
+  margin-right: 20px;
 }
 
 .link {
   margin-right: 15px;
+}
+
+.btn {
+  min-width: 80px;
+  background: #fff;
+}
+
+.info {
+  max-width: 70%;
 }

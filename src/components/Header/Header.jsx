@@ -1,12 +1,12 @@
-import styles from '../Header/header.module.css'
-import ButtonMain from '../ButtonMain/ButtonMain';
+import styles from "../Header/header.module.css";
+import PropTypes from "prop-types";
 
-function Header () {
-    return <div className ={styles.container}>
-        <ButtonMain path ={'/'} name={'Home'}/>
-        <ButtonMain path ={'/movies'} name={'Movies'}/>
-        </div>
+function Header({ children }) {
+  return <div className={styles.container}>{children}</div>;
 }
 
+export default Header;
 
-export default Header
+Header.propTypes = {
+  children: PropTypes.node,
+};

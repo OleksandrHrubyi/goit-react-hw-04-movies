@@ -1,6 +1,5 @@
 const KEY = "ded316cd594a4a167b1b831fae420aff";
 const BASE_URL = "https://api.themoviedb.org";
-//https://developers.themoviedb.org/3/movies/get-movie-details
 
 function fetchTrendMovies() {
   return fetch(`${BASE_URL}/3/trending/movie/week?api_key=${KEY}`).then(

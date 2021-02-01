@@ -1,3 +1,45 @@
+.container {
+  width: 100%;
+}
+
+.box {
+  margin: -15px;
+}
 .title {
-  font-size: 15px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0px;
+}
+
+.item {
+  margin: 15px;
+
+  width: calc((100% - 8 * 15px) / 4);
+  transition: transform 0.3s;
+  background: rgba(205, 205, 226, 0.589);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.item:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.image {
+  width: 100%;
+
+  background-position: center;
 }
