@@ -45,5 +45,22 @@
   width: 100%;
   display: block;
   height: 400px;
-  background-position: center;
+
+  object-fit: contain;
+}
+
+@media screen and (min-width: 1500px) {
+  .item {
+    width: calc((100% - 10 * 15px) / 6);
+  }
+
+  .image {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .item {
+    width: calc((100% - 12 * 15px) / 8);
+  }
 }
