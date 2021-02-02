@@ -1,12 +1,11 @@
+import { Component } from "react";
+import { fetchMoviesFind } from "../service/moviesApi";
+import { Route } from "react-router-dom";
 import MoviesPage from "../components/MoviesPage/MoviesPage";
 import Container from "../components/Container/Container";
 import Header from "../components/Header/Header";
-import { Component } from "react";
-import { fetchMoviesFind } from "../service/moviesApi";
-
 import TrendList from "../components/TrendList/TrendList";
 import queryString from "query-string";
-import { Route } from "react-router-dom";
 import routes from "../routes";
 import ButtonMain from "../components/ButtonMain/ButtonMain";
 
@@ -15,8 +14,17 @@ class MoviesView extends Component {
     searchfilms: "",
     films: [],
   };
+
+  componentDidMount() {
+    const parsed = queryString.parse(this.props.location.search);
+    if (this.props.location.search) {
+      fetchMoviesFind(parsed.query).then((res) => {
+        this.setState({ films: res.results });
+      });
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props);
     if (
       prevState.searchfilms !== this.state.searchfilms &&
       this.state.searchfilms

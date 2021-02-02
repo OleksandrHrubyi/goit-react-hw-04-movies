@@ -2,10 +2,6 @@ import React, { Component, Suspense, lazy } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { Route, Switch } from "react-router-dom";
 import Loader from "react-loader-spinner";
-// import HomeView from "../views/HomeView";
-// import MoviesView from "../views/MoviesView";
-// import NotFoundView from "../views/NotFoundView";
-// import MoviesDetailsView from "../views/MoviesDetailsView";
 import routes from "../routes";
 
 const HomeView = lazy(() => import("../views/HomeView"));

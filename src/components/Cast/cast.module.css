@@ -6,10 +6,25 @@
 
 .item {
   width: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 15px;
-  width: calc((100% - 8 * 15px) / 4);
+  width: calc((100% - 8 * 16px) / 4);
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .img {
   width: 100%;
+  display: block;
+  height: 80%;
+  object-fit: contain;
+}
+
+.info {
+  background-color: rgb(47, 0, 255);
+  padding: 10px;
+  color: #fff;
 }

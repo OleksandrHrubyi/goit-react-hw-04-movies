@@ -1,5 +1,9 @@
 .container {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .box {
@@ -20,7 +24,6 @@
 
 .item {
   margin: 15px;
-
   width: calc((100% - 8 * 15px) / 4);
   transition: transform 0.3s;
   background: rgba(205, 205, 226, 0.589);
@@ -40,6 +43,7 @@
 
 .image {
   width: 100%;
-
+  display: block;
+  height: 400px;
   background-position: center;
 }

@@ -1,6 +1,7 @@
 import styles from "../ButtonMain/buttonMain.module.css";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function ButtonMain({ name, path, onClick, ...props }) {
   return (
@@ -16,5 +17,12 @@ function ButtonMain({ name, path, onClick, ...props }) {
     </NavLink>
   );
 }
+
+ButtonMain.propTypes = {
+  name: PropTypes.string,
+  path: PropTypes.string,
+  onClick: PropTypes.func,
+  props: PropTypes.object,
+};
 
 export default withRouter(ButtonMain);

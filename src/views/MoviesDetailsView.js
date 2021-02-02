@@ -20,10 +20,6 @@ class MoviesDetailsView extends Component {
     reviews: [],
   };
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   componentDidMount() {
     fetchMoviesDetails(this.props.match.params.moviesId).then((response) => {
       this.setState({ movieInfo: response });
@@ -44,7 +40,6 @@ class MoviesDetailsView extends Component {
       return;
     }
     this.props.history.push(routes.home);
-    console.log(this.props);
   };
 
   render() {

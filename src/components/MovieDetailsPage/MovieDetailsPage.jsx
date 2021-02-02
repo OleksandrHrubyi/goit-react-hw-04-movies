@@ -1,6 +1,7 @@
 import styles from "./movieDetailsPage.module.css";
 import { withRouter } from "react-router-dom";
 import ButtonMain from "../ButtonMain/ButtonMain";
+import PropTypes from "prop-types";
 
 export const FIND_IMG_URL = "https://image.tmdb.org/t/p/w500/";
 
@@ -36,5 +37,11 @@ function MovieDetailsPage({ movies, match, onClick }) {
     </>
   );
 }
+
+MovieDetailsPage.propTypes = {
+  onClick: PropTypes.func,
+  movies: PropTypes.object,
+  match: PropTypes.object,
+};
 
 export default withRouter(MovieDetailsPage);

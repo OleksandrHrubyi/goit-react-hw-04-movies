@@ -17,8 +17,20 @@
 }
 
 .btn {
+  margin-bottom: 10px;
+  border-radius: 5px;
   min-width: 80px;
   background: #fff;
+  cursor: pointer;
+  background: rgb(228, 228, 247);
+  outline: none;
+  border: none;
+}
+
+.btn:hover,
+.btn:focus {
+  background: rgb(10, 73, 189);
+  color: #fff;
 }
 
 .info {
