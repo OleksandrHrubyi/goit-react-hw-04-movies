@@ -1,17 +1,21 @@
 import { Route, Switch } from "react-router-dom";
 import Container from "../components/Container/Container";
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import MoviesDetailsPage from "../components/MovieDetailsPage/MovieDetailsPage";
-import Cast from "../components/Cast/Cast";
-import Reviews from "../components/Reviews/Reviews";
-import Header from "../components/Header/Header";
 import routes from "../routes";
-import ButtonMain from "../components/ButtonMain/ButtonMain";
+import Loader from "react-loader-spinner";
 import {
   fetchMoviesDetails,
   fetchMoviesCredits,
   fetchMoviesReviews,
 } from "../service/moviesApi";
+
+const Cast = lazy(() =>
+  import("../components/Cast/Cast" /* webpackChunkName: "cast-view" */)
+);
+const Reviews = lazy(() =>
+  import("../components/Reviews/Reviews" /* webpackChunkName: "Reviews-view" */)
+);
 
 class MoviesDetailsView extends Component {
   state = {
@@ -48,26 +52,28 @@ class MoviesDetailsView extends Component {
 
     return (
       <Container>
-        <Header>
-          <ButtonMain path={routes.home} name={"Home"} />
-          <ButtonMain path={routes.movies} name={"Movies"} />
-        </Header>
         <MoviesDetailsPage
           movies={movieInfo}
           onClick={this.handleOnclickHistory}
         />
-        <Switch>
-          <Route
-            exact
-            path={`${url}/cast`}
-            render={(props) => <Cast {...props} cast={credits} />}
-          />
-          <Route
-            exact
-            path={`${url}/review`}
-            render={(props) => <Reviews {...props} reviews={reviews} />}
-          />
-        </Switch>
+        <Suspense
+          fallback={
+            <Loader type="ThreeDots" color="#00BFFF" height={50} width={50} />
+          }
+        >
+          <Switch>
+            <Route
+              exact
+              path={`${url}/cast`}
+              render={(props) => <Cast {...props} cast={credits} />}
+            />
+            <Route
+              exact
+              path={`${url}/review`}
+              render={(props) => <Reviews {...props} reviews={reviews} />}
+            />
+          </Switch>
+        </Suspense>
       </Container>
     );
   }

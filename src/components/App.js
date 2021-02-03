@@ -3,16 +3,31 @@ import "react-toastify/dist/ReactToastify.css";
 import { Route, Switch } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import routes from "../routes";
-
-const HomeView = lazy(() => import("../views/HomeView"));
-const MoviesView = lazy(() => import("../views/MoviesView"));
-const MoviesDetailsView = lazy(() => import("../views/MoviesDetailsView"));
-const NotFoundView = lazy(() => import("../views/NotFoundView"));
+import Header from "./Header/Header";
+import ButtonMain from "./ButtonMain/ButtonMain";
+const HomeView = lazy(() =>
+  import("../views/HomeView" /* webpackChunkName: "home-view" */)
+);
+const MoviesView = lazy(() =>
+  import("../views/MoviesView" /* webpackChunkName: "movies-view" */)
+);
+const MoviesDetailsView = lazy(() =>
+  import(
+    "../views/MoviesDetailsView" /* webpackChunkName: "movies-details-view" */
+  )
+);
+const NotFoundView = lazy(() =>
+  import("../views/NotFoundView" /* webpackChunkName: "not-found-page" */)
+);
 
 class App extends Component {
   render() {
     return (
       <>
+        <Header>
+          <ButtonMain path={routes.home} name={"Home"} />
+          <ButtonMain path={routes.movies} name={"Movies"} />
+        </Header>
         <Suspense
           fallback={
             <Loader type="ThreeDots" color="#00BFFF" height={50} width={50} />

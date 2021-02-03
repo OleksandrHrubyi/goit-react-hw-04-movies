@@ -1,5 +1,9 @@
 .container {
-  padding: 15px;
+  padding: 20px;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  z-index: 999;
   margin-bottom: 20px;
   background: white;
   border-bottom: 1px solid black;
